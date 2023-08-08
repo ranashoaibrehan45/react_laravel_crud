@@ -8,6 +8,8 @@ const DefaultLayout = () => {
 
     if (!token) {
         return <Navigate to="/login" />
+    } else if (Object.keys(user).length > 0 && user.email_verified_at === null) {
+        return <Navigate to="verify" />
     }
 
     const onLogout = (e) => {

@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import axiosClient from '../axios-client';
 import { useStateContext } from '../contexts/ContextProvider';
 
 const Signup = () => {
-    const nameRef = useRef();
+    const firstnameRef = useRef();
+    const lastnameRef = useRef();
     const emailRef = useRef();
     const passwordRef = useRef();
     const passwordConfirmationRef = useRef();
@@ -16,7 +17,8 @@ const Signup = () => {
     const onSubmit = (e) => {
         e.preventDefault()
         const payload = {
-            name: nameRef.current.value,
+            first_name: firstnameRef.current.value,
+            last_name: lastnameRef.current.value,
             email: emailRef.current.value,
             password: passwordRef.current.value,
             password_confirmation: passwordConfirmationRef.current.value
@@ -47,7 +49,8 @@ const Signup = () => {
                 ))}
             </div>}
 
-            <input ref={nameRef} type="text" placeholder='Full Name' />
+            <input ref={firstnameRef} type="text" placeholder='First Name' />
+            <input ref={lastnameRef} type="text" placeholder='Last Name' />
             <input ref={emailRef} type="email" placeholder='Email Address' />
             <input ref={passwordRef} type="password" placeholder='Password' />
             <input ref={passwordConfirmationRef} type="password" placeholder='Password Confirmation' />

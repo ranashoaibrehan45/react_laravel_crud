@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Route::get('/', function () {
+//     return redirect()->away(config('app.url'));
+// })->name('login');
+
+Route::get('/email/verify/{id}/{hash}', [AuthController::class, 'verify'])
+    ->name('verification.verify');

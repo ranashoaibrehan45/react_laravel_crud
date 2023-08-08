@@ -7,6 +7,7 @@ import DefaultLayout from './components/DefaultLayout.jsx';
 import GuestLayout from './components/GuestLayout.jsx';
 import Dashboard from './views/Dashboard.jsx';
 import UserCreate from './views/UserCreate.jsx';
+import VerifyEmail from './views/VerifyEmail.jsx';
 
 
 const router = createBrowserRouter ([
@@ -47,6 +48,10 @@ const router = createBrowserRouter ([
             {
                 path: '/signup',
                 element: <Signup />
+            },
+            {
+                path: '/verify',
+                element: <VerifyEmail />
             }
         ]
     },

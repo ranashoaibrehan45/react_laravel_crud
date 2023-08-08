@@ -33,8 +33,6 @@ class UserController extends Controller
      */
     public function store(StoreUserRequest $request)
     {
-        Log::info(print_r($request->all(), true));
-        die();
         $data = $request->validated();
         $data['password'] = bcrypt($data['password']);
         $user = User::create($data);
