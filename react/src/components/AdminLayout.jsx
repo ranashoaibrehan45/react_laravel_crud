@@ -3,15 +3,15 @@ import { Outlet, Navigate, Link } from 'react-router-dom';
 import { useStateContext } from '../contexts/ContextProvider';
 import axiosClient from '../axios-client';
 
-const DefaultLayout = () => {
+const AdminLayout = () => {
     const {user, token, notification, setUser, setToken} = useStateContext()
 
     if (!token) {
         return <Navigate to="/login" />
     } else if (Object.keys(user).length > 0 && user.email_verified_at === null) {
         return <Navigate to="verify" />
-    } else if (Object.keys(user).length > 0 && user.role === 'admin') {
-        return <Navigate to="/admin" />
+    } else if (Object.keys(user).length > 0 && user.role === 'user') {
+        return <Navigate to="/dashboard" />
     }
 
     const onLogout = (e) => {
@@ -34,12 +34,13 @@ const DefaultLayout = () => {
     return (
         <div id='defaultLayout'>
             <aside>
-                <Link to="/dashboard">Dashboard</Link>
+                <Link to="/admin/dashboard">Dashboard</Link>
+                <Link to="/admin/users">Users</Link>
             </aside>
             <div className="content">
                 <header>
                     <div>
-                        Header
+                        AdminPanel
                     </div>
                     <div>
                         {user.name}
@@ -60,4 +61,4 @@ const DefaultLayout = () => {
     );
 }
 
-export default DefaultLayout;
+export default AdminLayout;

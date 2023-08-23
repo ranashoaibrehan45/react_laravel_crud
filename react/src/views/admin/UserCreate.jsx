@@ -1,7 +1,7 @@
 import React, { useEffect, useState, Component } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import axiosClient from '../axios-client';
-import { useStateContext } from '../contexts/ContextProvider';
+import axiosClient from '../../axios-client';
+import { useStateContext } from '../../contexts/ContextProvider';
 
 const UserCreate = () => {
     const navigate = useNavigate()

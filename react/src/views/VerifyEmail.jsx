@@ -1,12 +1,12 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { useStateContext } from '../contexts/ContextProvider';
 import axiosClient from '../axios-client';
 
 const VerifyEmail = () => {
     const {user, setUser, setNotification} = useStateContext()
-
+    
     useEffect(() => {
-        axiosClient.get('user')
+        axiosClient.get('/user')
             .then(({data}) => {
                 setUser(data)
             })

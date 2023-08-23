@@ -5,8 +5,10 @@ import { useStateContext } from '../contexts/ContextProvider';
 const GuestLayout = () => {
     const {token, user, notification} = useStateContext();
 
-    if (token && user.verified_at) {
-        return <Navigate to="/dashboard" />
+    if (token) {
+        if (Object.keys(user).length > 0 && user.email_verified_at === null) {
+            return <Navigate to="/email/verification" />
+        }
     }
 
     return (

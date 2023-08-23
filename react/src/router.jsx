@@ -1,13 +1,22 @@
 import { Navigate, createBrowserRouter } from 'react-router-dom';
 import Login from "./views/Login.jsx";
 import Signup from "./views/Signup.jsx";
-import Users from "./views/Users.jsx";
+
 import NotFound from './views/NotFound';
+
+// layouts
 import DefaultLayout from './components/DefaultLayout.jsx';
+import AdminLayout from './components/AdminLayout.jsx';
 import GuestLayout from './components/GuestLayout.jsx';
+
+// app components
 import Dashboard from './views/Dashboard.jsx';
-import UserCreate from './views/UserCreate.jsx';
 import VerifyEmail from './views/VerifyEmail.jsx';
+
+// admin components
+import AdminDashboard from './views/admin/Dashboard.jsx';
+import Users from "./views/admin/Users.jsx";
+import UserCreate from './views/admin/UserCreate.jsx';
 
 
 const router = createBrowserRouter ([
@@ -22,17 +31,27 @@ const router = createBrowserRouter ([
             {
                 path: '/dashboard',
                 element: <Dashboard />
+            }
+        ]
+    },
+    {
+        path: '/admin',
+        element: <AdminLayout />,
+        children: [
+            {
+                path: '/admin/dashboard',
+                element: <AdminDashboard />
             },
             {
-                path: '/users',
+                path: '/admin/users',
                 element: <Users />
             },
             {
-                path: '/users/create',
+                path: '/admin/users/create',
                 element: <UserCreate key="userCreate" />
             },
             {
-                path: '/users/:id',
+                path: '/admin/users/:id',
                 element: <UserCreate key="userUpdate" />
             }
         ]
@@ -50,7 +69,7 @@ const router = createBrowserRouter ([
                 element: <Signup />
             },
             {
-                path: '/verify',
+                path: '/email/verification',
                 element: <VerifyEmail />
             }
         ]
