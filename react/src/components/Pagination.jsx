@@ -33,10 +33,10 @@ const Pagination = ({
         if (meta.current_page > 2) {
             head = meta.current_page - 1;
             tail = meta.current_page + 1;
+        }
 
-            if (tail > meta.last_page) {
-                tail = meta.last_page;
-            }
+        if (tail > meta.last_page) {
+            tail = meta.last_page;
         }
 
         for (let i=head; i <= tail; i++) {
@@ -63,11 +63,11 @@ const Pagination = ({
             </div>
             <div className='right'>
                 <div className='pagination'>
-                    <a onClick={firstPage} className='btn'>First</a>
-                    <a onClick={previousPage} className='btn'>Previous</a>
+                    {meta.current_page > 1 && <a onClick={firstPage} className='btn'>First</a>}
+                    {meta.current_page > 1 && <a onClick={previousPage} className='btn'>Previous</a>}
                     {renderPaginationNumbers(meta)}
-                    <a onClick={nextPage} className='btn'>Next</a>
-                    <a onClick={lastPage} className='btn'>Last</a>
+                    {meta.current_page < meta.total && <a onClick={nextPage} className='btn'>Next</a>}
+                    {meta.current_page < meta.total && <a onClick={lastPage} className='btn'>Last</a>}
                 </div>
             </div>
         </div>

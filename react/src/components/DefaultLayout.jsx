@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { Outlet, Navigate, Link } from 'react-router-dom';
 import { useStateContext } from '../contexts/ContextProvider';
+import '../css/index.css'
+
 import axiosClient from '../axios-client';
 
 const DefaultLayout = () => {

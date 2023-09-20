@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Outlet, Navigate, Link } from 'react-router-dom';
 import { useStateContext } from '../contexts/ContextProvider';
 import axiosClient from '../axios-client';
+import '../css/admin.css'
 
 const AdminLayout = () => {
     const {user, token, notification, setUser, setToken} = useStateContext()

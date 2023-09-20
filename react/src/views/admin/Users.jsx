@@ -87,12 +87,12 @@ const Users = () => {
                 </table>
                 
                 
-                <Pagination 
+                {meta.total > meta.per_page && <Pagination 
                     meta={meta}
                     links={links}
                     getData={getUsers}
                     endUrl="/users"
-                />
+                />}
             </div>
         </div>
     );
