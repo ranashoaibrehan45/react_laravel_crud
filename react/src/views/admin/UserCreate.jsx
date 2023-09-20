@@ -16,14 +16,14 @@ const UserCreate = () => {
         first_name: '',
         last_name: '',
         email: '',
-        avatar: null,
+        photo: null,
         password: '',
         password_confirmation: '',
     })
 
     const onChange = (ev) => {
         console.log(user);
-        setUser({...user, avatar: ev.target.files[0]})
+        setUser({...user, photo: ev.target.files[0]})
     }
 
     const onSubmit = (ev) => {
@@ -33,7 +33,7 @@ const UserCreate = () => {
             axiosClient.put(`/users/${user.id}`, user)
                 .then(() => {
                     setNotification("User was successfully updated!")
-                    navigate('/users')
+                    navigate('/admin/users')
                 })
                 .catch(error => {
                     const response = error.response;
@@ -45,7 +45,7 @@ const UserCreate = () => {
             axiosClient.post(`/users`, user)
                 .then(() => {
                     setNotification("User was successfully created!")
-                    navigate('/users')
+                    navigate('/admin/users')
                 })
                 .catch(error => {
                     const response = error.response;
@@ -72,7 +72,7 @@ const UserCreate = () => {
 
     return (
         <div>
-            {user.id && <h1>Update User: {user.name}</h1>}
+            {user.id && <h1>Update User: {user.first_name} {user.last_name}</h1>}
             {!user.id && <h1>Create New User</h1>}
 
             <div className='card animated fadeInDown'>

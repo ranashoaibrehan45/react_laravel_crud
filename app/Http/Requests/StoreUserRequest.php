@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules\File;
 
 class StoreUserRequest extends FormRequest
 {
@@ -26,6 +27,12 @@ class StoreUserRequest extends FormRequest
             'last_name' => 'required|string|max:55',
             'email' => 'required|email|unique:users,email',
             'password' => ['required', 'confirmed'],
+            'photo' => [
+                'required',
+                File::image()
+                    //->max(12 * 1024)
+                    //->dimensions(Rule::dimensions()->maxWidth(1000)->maxHeight(500))
+            ]
         ];
     }
 }

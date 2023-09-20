@@ -21,6 +21,7 @@ return new class extends Migration
             $table->enum('role',['user','freelancer','admin'])->default('user');
             $table->string('phone')->nullable();
             $table->timestamp('phone_verified_at')->nullable();
+            $table->string('photo')->nullable();
             $table->string('address_line1')->nullable();
             $table->string('address_line2')->nullable();
             $table->string('city_id')->nullable();
